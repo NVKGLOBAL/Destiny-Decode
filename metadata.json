@@ -1,0 +1,6 @@
+{
+  "name": "ÆTHER: Quantum Destiny Blueprint",
+  "description": "Destiny Decode Mini-Reading presented by Lisa Garcia Ruiz. Get immediate access to the Destiny Decode Quiz & your personal Divine Scroll Blueprint: a high-impact quantum snapshot of your current activation codes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
