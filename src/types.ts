@@ -296,7 +296,7 @@ export const QUIZ_QUESTIONS: Question[] = [
       { text: "Silence, temples, dissolving into fog", archetype: ArchetypeKey.MYSTIC },
       { text: "Furnaces, serpents, crucibles", archetype: ArchetypeKey.ALCHEMIST },
       { text: "Thrones, mountains, ancestral voices", archetype: ArchetypeKey.SOVEREIGN },
-      { text: "Scrolls, codes, labyrinths, whispering winds", archetype: ArchetypeKey.ORACLE },
+      { text: "Blueprints, codes, labyrinths, whispering winds", archetype: ArchetypeKey.ORACLE },
       { text: "Animals, heartbeats, hands touching, tears", archetype: ArchetypeKey.EMPATH },
     ],
   },

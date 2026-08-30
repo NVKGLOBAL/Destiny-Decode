@@ -542,7 +542,7 @@ export default function PortalOverlay() {
                   {/* Fallback & Helper Footnote bar */}
                   <div className="bg-[#0a0a0f] py-2.5 px-4 border-t border-white/5 text-center flex flex-col items-center justify-center gap-1">
                     <span className="text-[8px] font-mono tracking-wider text-[#f1e4c3]/40 font-bold">
-                      SECURED TRANSCENDENT PROTOCOL // SHIELDED BY RECODE MATRIX
+                      SECURED TRANSCENDENT PROTOCOL // SHIELDED BY COSMIC FIELD
                     </span>
                     <a
                       href={iframeUrl}

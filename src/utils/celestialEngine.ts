@@ -15,7 +15,7 @@ const PLANETARY_CYCLES = [
   { planet: "Mercurial Nexus", gate: "Crystalline Transmission Portal", element: "Air & Quick-Silver" },
   { planet: "Venusian Ray", gate: "Harmonic Heart Frequency", element: "Rose Light & Copper" },
   { planet: "Martian Surge", gate: "Sovereign Will Catalyst", element: "Electric Crimson" },
-  { planet: "Jupiter Octave", gate: "Galactic Expansion Matrix", element: "Royal Purple & Topaz" },
+  { planet: "Jupiter Octave", gate: "Galactic Cosmic Expansion", element: "Royal Purple & Topaz" },
   { planet: "Saturnian Crest", gate: "Mastery of Time & Structure", element: "Obsidian & Diamond" },
   { planet: "Chiron Gateway", gate: "Sacred Alchemical Integration", element: "Emerald Aether" }
 ];

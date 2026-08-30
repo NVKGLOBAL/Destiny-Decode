@@ -139,6 +139,16 @@ Provide your response in JSON format matching the schema exactly. Do not include
     }
   });
 
+  app.post("/api/oracle", async (req, res) => {
+    // Local dev mock since Cloudflare AI isn't available in standard Express
+    const { question } = req.body;
+    setTimeout(() => {
+      res.json({ 
+        answer: `*(Local Dev Mock)* The cosmos hears your inquiry: "${question}". When you deploy this application to Cloudflare Pages, this will be answered by the live, free Cloudflare Llama 3 AI Oracle. For now, trust that the stars are aligning perfectly in your favor.` 
+      });
+    }, 1500);
+  });
+
   // Vite middleware for development, serving assets & handling index.html mapping
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

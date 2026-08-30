@@ -70,6 +70,41 @@ export default function MemberSanctuary({
   const [selectedSector, setSelectedSector] = useState<number | null>(null);
   const [isMandalaFlashed, setIsMandalaFlashed] = useState(false);
 
+  // Cosmic Oracle State
+  const [oracleQuestion, setOracleQuestion] = useState("");
+  const [oracleResponse, setOracleResponse] = useState<string | null>(null);
+  const [oracleLoading, setOracleLoading] = useState(false);
+
+  const askOracle = async () => {
+    if (!oracleQuestion.trim()) return;
+    setOracleLoading(true);
+    setOracleResponse(null);
+    playHapticSound('space');
+    
+    try {
+      const response = await fetch("/api/oracle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: oracleQuestion,
+          archetype: resultArchetype.key,
+          zodiacSign: zodiacSign
+        })
+      });
+      const data = await response.json();
+      if (data.answer) {
+        setOracleResponse(data.answer);
+        playHapticSound('success');
+      } else {
+        setOracleResponse("The transmission was interrupted by solar flares. Try again.");
+      }
+    } catch (e) {
+      setOracleResponse("The transmission was interrupted by solar flares. Try again.");
+    } finally {
+      setOracleLoading(false);
+    }
+  };
+
   // Sound Synthesizer toggle bridge
   const handleToggleSound = (freq: string) => {
     setSelectedFreq(freq);
@@ -166,7 +201,7 @@ export default function MemberSanctuary({
       {
         name: "Jupiter's Alabaster Octave",
         element: "Gold & Expansion",
-        meaning: "The planet of destiny is casting a pure golden Ray on your throat and heart. Cosmic windfalls, sync events, and unexpected financial downloads are ready to trigger.",
+        meaning: "The planet of destiny is casting a pure golden Ray on your throat and heart. Cosmic windfalls, sync events, and unexpected financial transmissions are ready to trigger.",
         quest: "Write down an unvarnished vision of your maximum self on a blank sheet of paper. Fold it three times and store it in your pillow for 7 nights.",
         runicSymbol: "💮"
       },
@@ -260,19 +295,20 @@ export default function MemberSanctuary({
       </div>
 
       {/* Tabs Selector Navigation */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8 bg-indigo-50/50 p-2 rounded-[24px] border border-indigo-100 shadow-sm">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3 mb-8 bg-indigo-50/50 p-2 rounded-[24px] border border-indigo-100 shadow-sm">
         {[
           { id: 'daily', label: "✧ Daily Transit", icon: <Compass className="w-4 h-4" /> },
           { id: 'harmonics', label: "✧ Harmonics (Orb)", icon: <Music className="w-4 h-4" /> },
+          { id: 'oracle', label: "✧ Oracle (AI)", icon: <Sparkles className="w-4 h-4" /> },
           { id: 'weekly', label: "✧ Weekly Rune (Rare)", icon: <Sparkles className="w-4 h-4" /> },
-          { id: 'monthly', label: "✧ Monthly Prophecy (Legendary)", icon: <Moon className="w-4 h-4" /> }
+          { id: 'monthly', label: "✧ Monthly Prophecy", icon: <Moon className="w-4 h-4" /> }
         ].map(tab => (
           <button
             key={tab.id}
             onClick={() => { playHapticSound('light'); setActiveTab(tab.id as any); }}
-            className={`flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-bold font-mono text-xs uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id ? 'bg-[#1e1b4b] text-white shadow-md shadow-indigo-950/20 scale-[1.02]' : 'text-indigo-950/60 hover:text-indigo-950 hover:bg-white/50'}`}
+            className={`flex items-center justify-center gap-1.5 md:gap-2 px-2 md:px-4 py-3 md:py-3.5 rounded-2xl font-bold font-mono text-[9px] md:text-xs uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id ? 'bg-[#1e1b4b] text-white shadow-md shadow-indigo-950/20 scale-[1.02]' : 'text-indigo-950/60 hover:text-indigo-950 hover:bg-white/50'}`}
           >
-            {tab.icon}
+            <span className="hidden sm:inline-block">{tab.icon}</span>
             <span>{tab.label}</span>
           </button>
         ))}
@@ -482,6 +518,60 @@ export default function MemberSanctuary({
             </motion.div>
           )}
 
+          {/* ORACLE TAB */}
+          {activeTab === 'oracle' && (
+            <motion.div
+              key="oracle"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              className="space-y-8 max-w-2xl mx-auto"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-xs font-mono text-amber-700 tracking-[0.4em] uppercase font-bold mb-2">Always-On Connection</h3>
+                <h4 className="text-3xl font-black text-indigo-950">The Cosmic Oracle</h4>
+                <p className="text-slate-500 mt-2 text-sm max-w-md mx-auto">Ask the stars directly. This celestial resonance engine runs on pure cosmic alignment.</p>
+              </div>
+
+              <div className="bg-indigo-50/50 border border-indigo-100 rounded-3xl p-6 md:p-8">
+                <textarea
+                  value={oracleQuestion}
+                  onChange={(e) => setOracleQuestion(e.target.value)}
+                  placeholder="What cosmic guidance do you seek today, beloved soul?"
+                  className="w-full bg-white border-2 border-indigo-100 rounded-2xl p-5 text-indigo-900 font-medium placeholder-indigo-300 focus:outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 transition-all min-h-[120px] resize-none"
+                />
+                
+                <button
+                  onClick={askOracle}
+                  disabled={oracleLoading || !oracleQuestion.trim()}
+                  className="w-full mt-4 bg-indigo-950 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center gap-2 hover:bg-indigo-900 transition-all disabled:opacity-50"
+                >
+                  {oracleLoading ? (
+                    <><RefreshCw className="w-4 h-4 animate-spin" /> Transmitting...</>
+                  ) : (
+                    <><Sparkles className="w-4 h-4 text-amber-400" /> Transmit to the Stars</>
+                  )}
+                </button>
+              </div>
+
+              <AnimatePresence>
+                {oracleResponse && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="bg-gradient-to-br from-[#fdfcf7] to-amber-50/30 border border-amber-200/50 p-6 md:p-8 rounded-[24px] shadow-sm relative">
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-amber-200/20 rounded-full blur-[30px] pointer-events-none" />
+                      <h4 className="text-[10px] font-mono font-bold text-amber-800 uppercase tracking-widest mb-4">Oracle's Wisdom</h4>
+                      <p className="text-slate-700 leading-relaxed font-medium italic whitespace-pre-wrap">{oracleResponse}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )}
+
           {/* RARE WEEKLY RUNE ENTRY */}
           {activeTab === 'weekly' && (
             <motion.div
@@ -585,7 +675,7 @@ export default function MemberSanctuary({
               <div className="flex items-center justify-between border-b border-indigo-100 pb-6">
                 <div>
                   <h3 className="text-xs font-mono text-amber-700 tracking-[0.4em] uppercase font-bold">Portal 4 • Legendary Monthly Projection</h3>
-                  <h4 className="text-3xl font-black text-indigo-950">The Mandala Matrix</h4>
+                  <h4 className="text-3xl font-black text-indigo-950">The Cosmic Mandala</h4>
                   <p className="text-xs text-slate-500 font-medium mt-1">Epic once-a-month major shadow-work and timeline calibration prophecy.</p>
                 </div>
                 {selectedSector !== null && (
@@ -594,7 +684,7 @@ export default function MemberSanctuary({
                     className="flex items-center gap-1.5 text-xs text-indigo-600 hover:text-indigo-800 font-mono font-bold"
                   >
                     <Unlock className="w-3.5 h-3.5" />
-                    <span>UNLOCKS MATRIX</span>
+                    <span>UNLOCKS COSMOS</span>
                   </button>
                 )}
               </div>

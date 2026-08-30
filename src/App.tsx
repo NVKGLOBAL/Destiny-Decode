@@ -489,7 +489,7 @@ export default function App() {
   };
 
   const handleDownloadPDF = async () => {
-    const scrollElement = document.getElementById('divine-scroll-content');
+    const scrollElement = document.getElementById('cosmic-blueprint-content');
     if (!scrollElement) return;
 
     setIsGeneratingPDF(true);
@@ -889,7 +889,7 @@ export default function App() {
         </div>
         <div className="hidden md:flex gap-8 pointer-events-auto">
           <span className="text-[9px] font-mono tracking-widest uppercase text-indigo-200/60 font-semibold">Vibration: Balanced</span>
-          <span className="text-[9px] font-mono tracking-widest uppercase text-indigo-200/60 font-semibold">Scroll Codex: IX.IX</span>
+          <span className="text-[9px] font-mono tracking-widest uppercase text-indigo-200/60 font-semibold">Temple Blueprint: IX.IX</span>
         </div>
       </motion.header>
 
@@ -923,7 +923,7 @@ export default function App() {
                   <span className="text-sm sm:text-base font-mono font-extrabold uppercase tracking-[0.25em] text-amber-400">Presented By Lisa Garcia Ruiz</span>
                 </motion.div>
 
-                <h1 className="text-5xl sm:text-7xl md:text-[85px] lg:text-[105px] font-extrabold tracking-tight leading-[1] sm:leading-[0.95] md:leading-[0.9] bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-white to-indigo-100 text-glow">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[85px] break-words font-extrabold tracking-tight leading-[1] sm:leading-[0.95] md:leading-[0.9] bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-white to-indigo-100 text-glow">
                   Destiny Decode <br />
                   Mini-Reading
                 </h1>
@@ -944,7 +944,7 @@ export default function App() {
                   
                   <div className="md:col-span-2 space-y-6 md:space-y-8">
                     <p className="text-lg md:text-2xl text-slate-250 leading-relaxed font-bold">
-                      Get immediate access to the Destiny Decode Quiz & your personal Divine Scroll Blueprint. A high-impact celestial transcription of your eternal soul-glyphs and birth alignment.
+                      Get immediate access to the Destiny Decode Quiz & your personal Cosmic Temple Blueprint. A high-impact celestial transcription of your eternal soul-glyphs and birth alignment.
                     </p>
                     
                     <button 
@@ -1023,7 +1023,7 @@ export default function App() {
                              </li>
                              <li className="flex gap-3">
                                <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 text-indigo-800 font-mono text-[10px] font-bold mt-0.5">C</div>
-                               <p className="text-sm font-semibold"><strong className="text-indigo-950 font-extrabold">The 8-Page Divine Scroll:</strong> Instantly revealing your detailed gift details, daily integration ritual, and printable PDF archive.</p>
+                               <p className="text-sm font-semibold"><strong className="text-indigo-950 font-extrabold">The 8-Page Cosmic Temple Blueprint:</strong> Instantly revealing your detailed gift details, daily integration ritual, and printable PDF archive.</p>
                              </li>
                            </ol>
                         </div>
@@ -1278,7 +1278,7 @@ export default function App() {
               disabled={!userBirthday}
               className="px-12 md:px-16 py-5 md:py-6 rounded-full bg-indigo-600 text-white font-extrabold hover:bg-slate-950 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 shadow-lg shadow-indigo-600/20 uppercase tracking-[0.2em] text-xs cursor-pointer"
              >
-               Open Celestial Scroll
+               Open Celestial Blueprint
              </button>
           </motion.div>
         )}
@@ -1354,7 +1354,7 @@ export default function App() {
                   onClick={() => { playHapticSound('light'); setDashboardMode('scroll'); }}
                   className={`flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider transition-all duration-300 cursor-pointer ${dashboardMode === 'scroll' ? 'bg-[#fdfcf7] text-[#1e1b4b] shadow-sm' : 'text-indigo-200/50 hover:text-indigo-100 font-bold'}`}
                 >
-                  📜 Divine Scroll Codex
+                  📜 Cosmic Temple Blueprint
                 </button>
                 <button
                   onClick={() => { playHapticSound('space'); setDashboardMode('sanctuary'); }}
@@ -1430,11 +1430,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* The "Scroll" Pages */}
+            {/* The "Blueprint" Pages */}
             <div className="flex-1">
               <AnimatePresence mode="wait">
                 <motion.div
-                  id="divine-scroll-content"
+                  id="cosmic-blueprint-content"
                   key={scrollPage}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1484,7 +1484,7 @@ export default function App() {
                           animate={{ y: 0, opacity: 1 }}
                           className="text-[12px] font-mono text-amber-700 tracking-[0.8em] uppercase mb-8 font-bold"
                         >
-                          Celestial Scroll Revealed
+                          Celestial Blueprint Revealed
                         </motion.h2>
                         
                         <motion.h3 
@@ -1518,7 +1518,7 @@ export default function App() {
                         <div className="space-y-12 text-left">
                           {/* Title & Large Description */}
                           <div className="space-y-6">
-                            <h3 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-indigo-950 italic">The {resultArchetype.key}</h3>
+                            <h3 className="text-4xl sm:text-6xl md:text-7xl break-words font-black tracking-tight text-indigo-950 italic">The {resultArchetype.key}</h3>
                             <p className="text-2xl sm:text-3xl md:text-[34px] text-indigo-950 font-extrabold italic leading-relaxed border-l-8 border-amber-400 pl-8 py-6 my-8 bg-amber-50/50 rounded-r-[32px] pr-8 shadow-sm">
                               "{resultArchetype.description}"
                             </p>
@@ -1611,7 +1611,7 @@ export default function App() {
                                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,_transparent,_rgba(79,70,229,0.06),_transparent)] rounded-full animate-spin-slow" />
                             </motion.div>
                             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                              <span className="text-4xl md:text-6xl font-extrabold mb-2 text-indigo-950">{resultArchetype.signature.frequency}</span>
+                              <span className="text-3xl md:text-5xl font-extrabold break-words mb-2 text-indigo-950">{resultArchetype.signature.frequency}</span>
                               <span className="text-[11px] font-mono tracking-[0.4em] uppercase text-indigo-800 font-bold">Hz Resonance</span>
                             </div>
                           </div>
@@ -1764,14 +1764,14 @@ export default function App() {
 
                            <div className="w-full flex-1 space-y-8 md:space-y-12">
                                <div>
-                                 <h3 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-indigo-950">
+                                 <h3 className="text-3xl sm:text-3xl md:text-5xl font-extrabold break-words tracking-tight leading-tight text-indigo-950">
                                    Your Oracle <br /> Transmission
                                  </h3>
                                </div>
                                <div className="p-8 md:p-12 rounded-[40px] bg-gradient-to-br from-indigo-50 via-white to-amber-50/30 border-2 border-indigo-100 italic text-2xl sm:text-3xl md:text-[36px] font-black text-indigo-950 leading-relaxed shadow-md">
                                  "{resultArchetype.oracleMessage.message}"
                                </div>
-                                <p className="text-slate-500 font-bold uppercase tracking-widest">Timestamp: {new Date().toLocaleTimeString()} // Scroll Registered</p>
+                                <p className="text-slate-500 font-bold uppercase tracking-widest">Timestamp: {new Date().toLocaleTimeString()} // Blueprint Registered</p>
                              </div>
                           </div>
                        </div>
@@ -1832,7 +1832,7 @@ export default function App() {
                             <div className="p-6 md:p-8 rounded-[28px] bg-amber-50 border border-amber-100 shadow-sm">
                                <h4 className="text-[11px] font-mono font-bold text-amber-800 uppercase tracking-widest mb-4">Archival Note</h4>
                                <p className="text-sm text-slate-700 leading-relaxed italic font-semibold">
-                                 Export your Divine Scroll as a PDF to preserve these frequencies. Return to this ritual for 21 days to fully anchor the celestial alignment.
+                                 Export your Cosmic Temple Blueprint as a PDF to preserve these frequencies. Return to this ritual for 21 days to fully anchor the celestial alignment.
                                </p>
                             </div>
                           </div>
@@ -1852,7 +1852,7 @@ export default function App() {
                                 ) : (
                                   <Download className="w-5 h-5" />
                                 )}
-                                <span className="uppercase tracking-widest text-[10px] font-bold">{isGeneratingPDF ? "Generating..." : "Archive Scroll (PDF)"}</span>
+                                <span className="uppercase tracking-widest text-[10px] font-bold">{isGeneratingPDF ? "Generating..." : "Archive Blueprint (PDF)"}</span>
                               </button>
                               
                               <button 
@@ -1873,7 +1873,7 @@ export default function App() {
                       <div className="max-w-4xl mx-auto w-full">
                         <div className="text-center mb-12">
                           <h2 className="text-[12px] font-mono font-bold text-amber-700 tracking-[0.6em] uppercase mb-4">Evolutionary Paths</h2>
-                          <h3 className="text-4xl md:text-6xl font-extrabold tracking-tight text-indigo-950 mb-6 font-bold">Your Next Evolution</h3>
+                          <h3 className="text-3xl md:text-5xl font-extrabold break-words tracking-tight text-indigo-950 mb-6 font-bold">Your Next Evolution</h3>
                           <p className="text-xl text-slate-700 font-bold italic max-w-2xl mx-auto">
                             The journey of the {resultArchetype.key} is just beginning. Choose your vector of expansion.
                           </p>
@@ -2014,13 +2014,13 @@ export default function App() {
                   <div className="space-y-6">
                     <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                        <p className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-2">Next Threshold</p>
-                       <p className="text-white/80 italic">"Watch your cosmic parchment feed (inbox) for the scroll alignment key to the Full Destiny Session."</p>
+                       <p className="text-white/80 italic">"Watch your cosmic parchment feed (inbox) for the blueprint alignment key to the Full Destiny Session."</p>
                     </div>
                     <button 
                       onClick={() => setShowPortal(false)}
                       className="px-8 py-4 rounded-full bg-indigo-600 font-medium hover:bg-indigo-500 transition-all"
                     >
-                      Return to Study This Scroll
+                      Return to Study this Blueprint
                     </button>
                   </div>
                 </motion.div>
@@ -2042,7 +2042,7 @@ export default function App() {
                       </div>
                       <h2 className="text-[#fbbf24] text-[8px] font-mono tracking-[0.5em] uppercase mb-2">Presented By Lisa Garcia Ruiz</h2>
                       <h3 className="text-xl font-mono text-indigo-400 tracking-[0.4em] uppercase mb-8">Destiny Decode</h3>
-                      <h4 className="text-3xl font-medium tracking-tight mb-4">Your Divine Scroll Blueprint</h4>
+                      <h4 className="text-3xl font-medium tracking-tight mb-4">Your Cosmic Temple Blueprint</h4>
                       <p className="text-xl text-white opacity-60 leading-relaxed font-light mb-8">
                         Decoded for {userName}
                       </p>
@@ -2087,7 +2087,7 @@ export default function App() {
                   {page === 3 && resultArchetype && (
                     <div className="h-full">
                        <h2 className="text-sm font-mono text-[#fbbf24] tracking-widest uppercase mb-4">Waveform</h2>
-                       <h3 className="text-4xl font-medium mb-12">Vibrational Matrix</h3>
+                       <h3 className="text-4xl font-medium mb-12">Cosmic Vibrational Field</h3>
                        <div className="grid grid-cols-2 gap-12 pt-12">
                           {[
                             { label: "Color Ray", value: resultArchetype.signature.color },
@@ -2187,7 +2187,7 @@ export default function App() {
 
                   {/* PDF Footer on every page */}
                   <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-[0.3em] opacity-30 text-center w-full">
-                    Destiny Decode Divine Scroll • {userName} • Presented By Lisa Garcia Ruiz • Page {page} of 8
+                    Destiny Decode Cosmic Temple Blueprint • {userName} • Presented By Lisa Garcia Ruiz • Page {page} of 8
                   </div>
                 </div>
               ))}
